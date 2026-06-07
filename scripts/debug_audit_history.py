@@ -52,12 +52,12 @@ if not os.path.exists("historic.db"):
 # ==========================
 # DOWNLOAD AMFI DB
 # ==========================
-if not os.path.exists("amfi01jun2026.db"):
-    log.info("Downloading amfi01jun2026.db...")
+if not os.path.exists("amfi2026.db"):
+    log.info("Downloading amfi2026.db...")
 
     gdown.download(
-        "https://drive.google.com/uc?id=19qkES_jPw3c-5M0sZF8E4z8mtZyrKyM9",
-        "amfi01jun2026.db",
+        "https://drive.google.com/uc?id=1jOg0wjsKahf1vonssg1vDagqRLJGeo60",
+        "amfi2026.db",
         quiet=False,
         fuzzy=True
     )
@@ -114,7 +114,7 @@ with sqlite3.connect(":memory:") as conn:
     )
 
     conn.execute(
-        "ATTACH DATABASE 'amfi01jun2026.db' AS amfi;"
+        "ATTACH DATABASE 'amfi2026.db' AS amfi;"
     )
 
     conn.execute(
