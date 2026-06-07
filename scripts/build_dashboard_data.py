@@ -32,16 +32,16 @@ else:
     log.info("Cache hit: Using cached historic.db")
 
 # AMFI 01-Jun DB
-if not os.path.exists("amfi01jun2026.db"):
+if not os.path.exists("amfi2026.db"):
     log.info("Downloading AMFI 01-Jun database...")
     gdown.download(
-        "https://drive.google.com/uc?id=19qkES_jPw3c-5M0sZF8E4z8mtZyrKyM9",
-        "amfi01jun2026.db",
+        "https://drive.google.com/uc?id=1jOg0wjsKahf1vonssg1vDagqRLJGeo60",
+        "amfi2026.db",
         quiet=False,
         fuzzy=True
     )
 else:
-    log.info("Cache hit: Using amfi01jun2026.db")
+    log.info("Cache hit: Using amfi2026.db")
 
 # Daily mf.db
 log.info("Fetching daily mf.db from GitHub API...")
@@ -76,7 +76,7 @@ with sqlite3.connect(":memory:") as conn:
 
     conn.execute("ATTACH DATABASE 'mf.db' AS daily;")
     conn.execute("ATTACH DATABASE 'historic.db' AS historic;")
-    conn.execute("ATTACH DATABASE 'amfi01jun2026.db' AS amfi;")
+    conn.execute("ATTACH DATABASE 'amfi2026.db' AS amfi;")
 
     query = """
         SELECT
