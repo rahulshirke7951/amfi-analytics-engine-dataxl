@@ -90,7 +90,7 @@ with sqlite3.connect(":memory:") as conn:
 
         SELECT
             scheme_code,
-            nav,
+            nav_value AS nav,    
             nav_date,
             'amfi' AS source
         FROM amfi.nav_history
