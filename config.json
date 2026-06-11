@@ -1,5 +1,6 @@
 {
   "historic_db_url": "https://drive.google.com/uc?id=1mAuCWlD-n-RxYYim8RZ59-6Ke7nQSZgf",
+   "amfi_db_url": "https://drive.google.com/uc?id=1jOg0wjsKahf1vonssg1vDagqRLJGeo60",
   "mf_release_api": "https://api.github.com/repos/rahulshirke7951/mf-data-pipeline/releases/latest",
   "anchor_date": "2026-03-02",
   "return_periods_days": [7, 14, 30, 90, 180, 365, 730, 1095],
