@@ -85,9 +85,9 @@ with sqlite3.connect(":memory:") as conn:
     conn.execute("ATTACH DATABASE 'amfi2026.db' AS amfi;")
     conn.execute("ATTACH DATABASE 'historic.db' AS historic;")
 
-    # Standardized to select everything into nav_value columns
+    # CHANGED: Query nav_value directly from daily.nav_history instead of 'nav AS nav_value'
     daily_df = pd.read_sql_query(
-        "SELECT scheme_code, nav AS nav_value, nav_date FROM daily.nav_history WHERE scheme_code = ?", 
+        "SELECT scheme_code, nav_value, nav_date FROM daily.nav_history WHERE scheme_code = ?", 
         conn, params=[scheme_code_input]
     )
     
