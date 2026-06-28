@@ -5,8 +5,11 @@ on:
     inputs:
       scheme_code:
         description: "Enter Scheme Code (e.g. 140088)"
-        required: true
+        required: false
         type: string
+
+  schedule:
+    - cron: '30 20 * * 5'   # Saturday 2:00 AM IST (Friday 8:30 PM UTC)
 
 jobs:
   debug:
@@ -34,12 +37,13 @@ jobs:
 
       - name: Run Debug Script
         env:
-          SCHEME_CODE: ${{ github.event.inputs.scheme_code }}
+          SCHEME_CODE: ${{ github.event.inputs.scheme_code || '140088' }}
         run: |
+          echo "Running audit for scheme: $SCHEME_CODE"
           python scripts/debug_audit_history.py $SCHEME_CODE
 
       - name: Upload Debug Output
         uses: actions/upload-artifact@v4
         with:
-          name: debug-${{ github.event.inputs.scheme_code }}
+          name: debug-${{ github.event.inputs.scheme_code || '140088' }}
           path: debug_output/
